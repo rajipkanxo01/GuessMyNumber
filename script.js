@@ -1,4 +1,4 @@
-const randomNumber = Math.ceil(Math.random() * 20);
+let randomNumber = Math.ceil(Math.random() * 20);
 let score = 20;
 let displayMessage = function (message) {
   document.querySelector('.message').textContent = message;
@@ -46,5 +46,20 @@ function checkNumber() {
 };
 
 
+// reset game when again button is clicked
+function resetGame() {
+  randomNumber = Math.ceil(Math.random() * 6);
+  displayMessage('Start guessing...');
+  score = 20;
+  document.querySelector('.score').textContent = score;
+  document.querySelector('.highscore').textContent = 0;
+  document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.number').style.width = '180px';
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.guess').value = null;
+}
+
+
 
 document.querySelector('.check').addEventListener('click', checkNumber);
+document.querySelector('.again').addEventListener('click', resetGame);
