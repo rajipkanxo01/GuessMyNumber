@@ -1,5 +1,6 @@
 let randomNumber = Math.ceil(Math.random() * 20);
 let score = 20;
+let highScore = 0;
 let displayMessage = function (message) {
   document.querySelector('.message').textContent = message;
 }
@@ -23,7 +24,11 @@ function checkNumber() {
       document.querySelector('.number').textContent = randomNumber;
       document.querySelector('.number').style.width = '260px';
       document.querySelector('body').style.backgroundColor = '#60b347';
-      document.querySelector('.highscore').textContent = score;
+
+      if (score > highScore) {
+        highScore = score;
+        document.querySelector('.highscore').textContent = highScore;
+      }
       displayMessage('Correct Number!');
 
       // number not matched condition
@@ -52,7 +57,6 @@ function resetGame() {
   displayMessage('Start guessing...');
   score = 20;
   document.querySelector('.score').textContent = score;
-  document.querySelector('.highscore').textContent = 0;
   document.querySelector('body').style.backgroundColor = '#222';
   document.querySelector('.number').style.width = '180px';
   document.querySelector('.number').textContent = '?';
